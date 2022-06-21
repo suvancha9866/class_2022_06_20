@@ -46,9 +46,6 @@ x |>
   mutate(year = parse_number(year)) |> 
   group_by(artist) |> 
   summarize(frequency = n(), yearags = year) |> 
-  group_by(yearags)
-
-#  group_by(yearags) |> 
- # summarize(frequency = n()) |> 
-  
+  group_by(yearags) |> 
+  summarize(frequency_2 = n())
 ```
