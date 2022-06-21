@@ -1,0 +1,17 @@
+---
+title: "Billboard"
+author: "Suvan Chatakondu"
+date: '2022-06-21'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(billboard)
+library(tidyverse)
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+lyrics |> filter(year == 2016)
+```
+
