@@ -11,7 +11,44 @@ library(tidyverse)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r}
-lyrics |> filter(year == 2016)
+Which Artist appears the most
+```{r, echo = FALSE}
+#There are features that are unadressed in our frequencies
+x <- wiki_hot_100s |> 
+  as_tibble(wiki_hot_100s)
+temp <- x |> 
+  select(artist) |> 
+  group_by(artist) |> 
+  summarize(frequency = n()) |> 
+  arrange(desc(frequency)) |> 
+  slice(1)
 ```
+`r temp$artist` is the most appeared artist on the Wiki Top 100s from 1960 to 2016.
 
+How many artists appear on the billboard once?
+```{r, echo = FALSE}
+temp_1 <- x |> 
+  select(artist) |> 
+  group_by(artist) |> 
+  summarize(frequency = n()) |> 
+  arrange(desc(frequency)) |>
+  filter(frequency == 1)
+
+nrow(temp_1)
+```
+`r nrow(temp_1)` is the number of artists who appear once on the billboard 100.
+
+Which year has the most unique artists?
+```{r, echo = FALSE}
+#I wasn't able to complete this portion of the code.
+x |> 
+  select(artist, year) |> 
+  mutate(year = parse_number(year)) |> 
+  group_by(artist) |> 
+  summarize(frequency = n(), yearags = year) |> 
+  group_by(yearags)
+
+#  group_by(yearags) |> 
+ # summarize(frequency = n()) |> 
+  
+```
